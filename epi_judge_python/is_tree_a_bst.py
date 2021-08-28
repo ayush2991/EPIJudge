@@ -4,7 +4,14 @@ from test_framework import generic_test
 
 def is_binary_tree_bst(tree: BinaryTreeNode) -> bool:
     # TODO - you fill in here.
-    return True
+    def helper(tree, min_value, max_value):
+        if not tree:
+            return True
+        if tree.data < min_value or tree.data > max_value:
+            return False
+        return helper(tree.left, min_value, max_value=tree.data) and \
+            helper(tree.right, min_value=tree.data, max_value=max_value)
+    return helper(tree, float('-inf'), float('inf'))
 
 
 if __name__ == '__main__':
