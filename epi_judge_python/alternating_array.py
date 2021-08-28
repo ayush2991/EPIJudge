@@ -8,7 +8,10 @@ from test_framework.test_utils import enable_executor_hook
 
 def rearrange(A: List[int]) -> None:
     # TODO - you fill in here.
-    return
+    A.sort()
+    for i in range(2, len(A))[::2]:
+        A[i], A[i-1] = A[i-1], A[i]
+    return A
 
 
 @enable_executor_hook
