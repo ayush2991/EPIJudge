@@ -3,7 +3,13 @@ from test_framework import generic_test
 
 def can_form_palindrome(s: str) -> bool:
     # TODO - you fill in here.
-    return True
+    h = set()
+    for c in s:
+        if c in h:
+            h.remove(c)
+        else:
+            h.add(c)
+    return len(h) <= 1
 
 
 if __name__ == '__main__':
