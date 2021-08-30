@@ -4,7 +4,13 @@ from test_framework import generic_test
 
 def has_path_sum(tree: BinaryTreeNode, remaining_weight: int) -> bool:
     # TODO - you fill in here.
-    return True
+    if not tree:
+        return False
+    balance = remaining_weight - tree.data
+    if not tree.left and not tree.right:
+        return True if balance == 0 else False
+    return has_path_sum(tree.left, balance) \
+            or has_path_sum(tree.right, balance)
 
 
 if __name__ == '__main__':
