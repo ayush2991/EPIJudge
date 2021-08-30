@@ -4,7 +4,13 @@ from test_framework import generic_test
 
 def is_symmetric(tree: BinaryTreeNode) -> bool:
     # TODO - you fill in here.
-    return True
+    def helper(s, t):
+        if not s and not t:
+            return True
+        if not (s and t):
+            return False
+        return s.data == t.data and helper(s.left, t.right) and helper(s.right, t.left)
+    return helper(tree, tree)
 
 
 if __name__ == '__main__':
