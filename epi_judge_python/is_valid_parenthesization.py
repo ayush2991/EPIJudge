@@ -3,7 +3,28 @@ from test_framework import generic_test
 
 def is_well_formed(s: str) -> bool:
     # TODO - you fill in here.
-    return True
+    def is_opening(c):
+        return c == '(' or c == '[' or c == '{'
+
+    def match(c):
+        if c == '}':
+            return '{'
+        elif c == ']':
+            return '['
+        else:
+            return '('
+
+    stack = []
+    for c in s:
+        if is_opening(c):
+            stack.append(c)
+        else:
+            if len(stack) == 0:
+                return False
+            elif stack[-1] != match(c):
+                return False
+            stack.pop()
+    return len(stack) == 0
 
 
 if __name__ == '__main__':
