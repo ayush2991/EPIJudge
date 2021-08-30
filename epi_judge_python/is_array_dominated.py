@@ -17,6 +17,11 @@ class Team:
     @staticmethod
     def valid_placement_exists(team0: 'Team', team1: 'Team') -> bool:
         # TODO - you fill in here.
+        team0._players.sort()
+        team1._players.sort()
+        for i, p in enumerate(team0._players):
+            if p.height >= team1._players[i].height:
+                return False
         return True
 
 
