@@ -3,25 +3,15 @@ from test_framework import generic_test
 
 def is_well_formed(s: str) -> bool:
     # TODO - you fill in here.
-    def is_opening(c):
-        return c == '(' or c == '[' or c == '{'
-
-    def match(c):
-        if c == '}':
-            return '{'
-        elif c == ']':
-            return '['
-        else:
-            return '('
-
+    mapping = {')' : '(', ']' : '[', '}' : '{'}
     stack = []
     for c in s:
-        if is_opening(c):
+        if not c in mapping.keys():
             stack.append(c)
         else:
             if len(stack) == 0:
                 return False
-            elif stack[-1] != match(c):
+            elif stack[-1] != mapping[c]:
                 return False
             stack.pop()
     return len(stack) == 0
