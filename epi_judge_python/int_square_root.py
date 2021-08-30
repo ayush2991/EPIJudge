@@ -3,7 +3,21 @@ from test_framework import generic_test
 
 def square_root(k: int) -> int:
     # TODO - you fill in here.
-    return 0
+    if k <= 1:
+        return k
+    L, U = 1, k
+    root = 1
+    while L <= U:
+        M = (L+U)//2
+        if M**2 > k:
+            U = M - 1
+        elif M**2 < k:
+            root = M
+            L = M + 1
+        else:
+            root = M
+            break
+    return root
 
 
 if __name__ == '__main__':
