@@ -1648,7 +1648,7 @@ problem_mapping = {
                 "total": 1001
             },
             "Python: h_index.py": {
-                "passed": 0,
+                "passed": 2,
                 "total": 1001
             }
         },
@@ -1662,7 +1662,7 @@ problem_mapping = {
                 "total": 202
             },
             "Python: remove_duplicates.py": {
-                "passed": 0,
+                "passed": 202,
                 "total": 202
             }
         },
