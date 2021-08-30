@@ -11,7 +11,21 @@ Event = collections.namedtuple('Event', ('start', 'finish'))
 
 def find_max_simultaneous_events(A: List[Event]) -> int:
     # TODO - you fill in here.
-    return 0
+    L = []
+    for a in A:
+        # in case of same timestamp, start should appear first so as to count more concurrent events
+        L.append((a.start, '1_start'))
+        L.append((a.finish, '2_finish'))
+    L.sort()
+    events = 0
+    max_events = 0
+    for l in L:
+        if l[1] == '1_start':
+            events += 1
+            max_events = max(max_events, events)
+        else:
+            events -= 1
+    return max_events
 
 
 @enable_executor_hook
